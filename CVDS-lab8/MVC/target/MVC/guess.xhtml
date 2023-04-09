@@ -16,18 +16,14 @@ xmlns:p="http://primefaces.org/ui">
             <p:commandButton  update="guess_form" actionListener="#{guessBean.restart}" value = "Reiniciar"/>
 
             <div class="card">
-                <p:dataTable var="attempt" value="#{guessBean.attempts}">
-                    <p:column headerText="Id">
-                        <h:outputText value = "#{guessBean.attempts.get(guessBean.attempts.indexOf(attempt))}"/>
-                    </p:column>
-                    <p:column headerText="Datos">
-                        <h:outputText value = "#{guessBean.pastIntents.get(guessBean.attempts.indexOf(attempt))}"/>
+                <p:dataTable var="attempts" value="#{guessBean.attempts}">
+                    <p:column headerText="Precio">
+                        <h:outputText value = "#{guessBean.intent}"/>
                     </p:column>
                 </p:dataTable>
             </div>
         </h:form>
     </h:body>
 
-
-      
+   
 </html>
