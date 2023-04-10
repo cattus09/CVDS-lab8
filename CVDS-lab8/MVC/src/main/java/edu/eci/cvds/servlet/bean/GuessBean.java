@@ -7,12 +7,12 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.springframework.stereotype.Component;
-
-@ManagedBean(name = "guessBean")
+import java.io.Serializable;
 
 @Component
+@ManagedBean(name = "guessBean")
 @SessionScoped
-public class Backing_bean {
+public class GuessBean implements Serializable{
     private int number;
 	private int intent;
 	private int price;
@@ -21,7 +21,7 @@ public class Backing_bean {
     private ArrayList<Integer> pastIntents;
     private int index;
 
-    public Backing_bean() {
+    public GuessBean() {
         restart();
 	}
 
