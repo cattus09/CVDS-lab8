@@ -1,13 +1,14 @@
-
-
 package edu.eci.cvds.servlet.bean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import org.springframework.stereotype.Component;
-import java.io.Serializable;
+
 
 @Component
 @ManagedBean(name = "guessBean")
