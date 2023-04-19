@@ -1,4 +1,7 @@
 package edu.eci.cvds.servlet.bean;
+
+import edu.eci.cvds.servlet.model.Todo.Configuration;
+import edu.eci.cvds.servlet.service.ConfigurationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -13,28 +16,31 @@ import java.util.Random;
 @Component
 @ManagedBean(name = "guessBean")
 @SessionScoped
-public class GuessBean implements Serializable{
+public class GuessBean implements Serializable {
     private int number;
-	private int intent;
-	private int price;
-	private String state;
+    private int intent;
+    private int price;
+    private String state;
     private ArrayList<Integer> attempts;
     private ArrayList<Integer> pastIntents;
     private int index;
+    private ConfigurationService configurationService;
+    private int premioBase;
+    private int premioActual;
 
     public GuessBean() {
         restart();
-	}
+    }
 
     public void guess(int guessNumber) {
-        if(number == guessNumber) {
-            state = "Ganaste con numero de intentos : " + intent + "Y con un premio de : " + price;
-        } else if (price == 0){
+        if (number == guessNumber) {
+            state = "Ganaste con numero de intentos : " + intent + "Y con un premio de : " + price + " tu premio es " + premioActual;
+        } else if (price == 0) {
             state = "Perdiste D:";
-        }else {
+        } else {
             price -= 10000;
             pastIntents.add(guessNumber);
-            intent ++;
+            intent++;
             attempts.add(intent);
             index = 0;
         }
@@ -49,58 +55,61 @@ public class GuessBean implements Serializable{
         pastIntents = new ArrayList<>();
         attempts = new ArrayList<>();
         index = 0;
+
     }
 
 
-
-
     public int getNumber() {
-		return number;
-	}
+        return number;
+    }
 
-	public void setNumber(int guessnumber) {
-		this.number = guessnumber;
-	}
+    public void setNumber(int guessnumber) {
+        this.number = guessnumber;
+    }
 
-	public int getIntent() {
-		return intent;
-	}
+    public int getIntent() {
+        return intent;
+    }
 
-	public void setIntent(int intent) {
-		this.intent = intent;
-	}
+    public void setIntent(int intent) {
+        this.intent = intent;
+    }
 
-	public int getPrice() {
-		return price;
-	}
+    public int getPrice() {
+        return price;
+    }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public String getState() {
+        return state;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
-	
+    public void setState(String state) {
+        this.state = state;
+    }
+
     public ArrayList<Integer> getAttempts() {
-		return attempts;
-	}
+        return attempts;
+    }
 
     public void setAttempts(ArrayList<Integer> attempts) {
-		this.attempts = attempts;
-	}
+        this.attempts = attempts;
+    }
 
     public ArrayList<Integer> getPastIntents() {
         return pastIntents;
     }
 
 
- 
 
+    public int getPremioBase() {
+        return premioBase;
+    }
 
-    
+    public void setPremioBase(int premioBase) {
+        this.premioBase = premioBase;
+    }
 }
